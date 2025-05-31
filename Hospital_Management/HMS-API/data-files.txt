@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "fullName": "Alankriti Dubey",
+    "gender": "Female",
+    "dob": "2000-05-26T23:39:52.339",
+    "phone": "7168089657",
+    "address": "Buffalo, NY",
+    "user": {
+      "fullName": "Alankriti Dubey",
+      "role": "Admin",
+      "id": "1",
+      "userName": "adubey2",
+      "normalizedUserName": null,
+      "email": "adubey2@buffalo.edu",
+      "normalizedEmail": null,
+      "emailConfirmed": true,
+      "passwordHash": "abcd",
+      "securityStamp": null,
+      "concurrencyStamp": null,
+      "phoneNumber": "7168089657",
+      "phoneNumberConfirmed": true,
+      "twoFactorEnabled": true,
+      "lockoutEnd": "2025-05-29T23:39:52.339+00:00",
+      "lockoutEnabled": true,
+      "accessFailedCount": 0
+    }
+  },
+  {
+    "id": 2,
+    "fullName": "Yashi Dubey",
+    "gender": "Female",
+    "dob": "1999-02-02T23:54:11.795",
+    "phone": "8851959189",
+    "address": "UP, India",
+    "user": {
+      "fullName": "Anukriti Dubey",
+      "role": "Patient",
+      "id": "2",
+      "userName": "anu02",
+      "normalizedUserName": null,
+      "email": "anukriti@gmail.com",
+      "normalizedEmail": null,
+      "emailConfirmed": true,
+      "passwordHash": "yashi",
+      "securityStamp": null,
+      "concurrencyStamp": null,
+      "phoneNumber": "8851959186",
+      "phoneNumberConfirmed": true,
+      "twoFactorEnabled": true,
+      "lockoutEnd": "2025-05-29T23:54:11.795+00:00",
+      "lockoutEnabled": true,
+      "accessFailedCount": 0
+    }
+  },
+  {
+    "id": 3,
+    "fullName": "Ayush Dubey",
+    "gender": "Male",
+    "dob": "2003-10-10T00:07:09.318",
+    "phone": "8232853918",
+    "address": "Warangal, India",
+    "user": {
+      "fullName": "Ayush Dubey",
+      "role": "Staff",
+      "id": "3",
+      "userName": "ayufff",
+      "normalizedUserName": null,
+      "email": "ayush@gmail.com",
+      "normalizedEmail": null,
+      "emailConfirmed": true,
+      "passwordHash": "ayufff",
+      "securityStamp": null,
+      "concurrencyStamp": null,
+      "phoneNumber": "8232853918",
+      "phoneNumberConfirmed": true,
+      "twoFactorEnabled": true,
+      "lockoutEnd": "2025-05-30T00:07:09.318+00:00",
+      "lockoutEnabled": true,
+      "accessFailedCount": 0
+    }
+  }
+]
