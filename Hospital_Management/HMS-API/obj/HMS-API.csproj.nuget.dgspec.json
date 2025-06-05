@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alank\\Documents\\.Net\\Hospital_Management\\HMS-API\\HMS-API.csproj": {}
+    "C:\\Users\\alank\\Documents\\CareTrack-HMS\\Hospital_Management\\HMS-API\\HMS-API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alank\\Documents\\.Net\\Hospital_Management\\HMS-API\\HMS-API.csproj": {
+    "C:\\Users\\alank\\Documents\\CareTrack-HMS\\Hospital_Management\\HMS-API\\HMS-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alank\\Documents\\.Net\\Hospital_Management\\HMS-API\\HMS-API.csproj",
+        "projectUniqueName": "C:\\Users\\alank\\Documents\\CareTrack-HMS\\Hospital_Management\\HMS-API\\HMS-API.csproj",
         "projectName": "HMS-API",
-        "projectPath": "C:\\Users\\alank\\Documents\\.Net\\Hospital_Management\\HMS-API\\HMS-API.csproj",
+        "projectPath": "C:\\Users\\alank\\Documents\\CareTrack-HMS\\Hospital_Management\\HMS-API\\HMS-API.csproj",
         "packagesPath": "C:\\Users\\alank\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alank\\Documents\\.Net\\Hospital_Management\\HMS-API\\obj\\",
+        "outputPath": "C:\\Users\\alank\\Documents\\CareTrack-HMS\\Hospital_Management\\HMS-API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alank\\AppData\\Roaming\\NuGet\\NuGet.Config"
