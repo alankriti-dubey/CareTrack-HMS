@@ -2,9 +2,11 @@ import { useContext } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { AuthContext, AuthProvider } from './context/AuthContext';
-import AddPatients from './pages/AddPatients';
 import Login from './pages/Login';
-import Patients from './pages/Patient';
+import AddPatients from './pages/Patient/AddPatients';
+import EditPatient from './pages/Patient/EditPatient';
+import Patients from './pages/Patient/Patient';
+import PatientDetails from './pages/Patient/PatientDetails';
 
 function PrivateRoute({children}){
   const {token} = useContext(AuthContext);
@@ -23,6 +25,10 @@ function App() {
           <Route path='/patients/new' element={<PrivateRoute>
             <AddPatients/>
           </PrivateRoute>}/>
+          <Route path='/patients/:id' element={<PrivateRoute><PatientDetails/></PrivateRoute>}></Route>
+          <Route path='"/edit-patient/:id"' element = {
+            <PrivateRoute><EditPatient/></PrivateRoute>
+          }></Route>
           <Route path='*' element={<Navigate to={'/login'}/>}/>
         </Routes>
       </BrowserRouter>

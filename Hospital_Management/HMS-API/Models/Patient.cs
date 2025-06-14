@@ -1,5 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 public class Patient
 {
+    [Key]
     public int Id { get; set; }
     public required string FullName { get; set; }
     public required string Gender { get; set; }

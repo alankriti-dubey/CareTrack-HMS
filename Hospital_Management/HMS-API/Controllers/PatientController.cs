@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,9 +12,11 @@ namespace HMS_API.Controllers
     public class PatientController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public PatientController(ApplicationDbContext context)
+        private readonly UserManager<User> _userManager;
+        public PatientController(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [Authorize(Roles = "admin")]
@@ -39,6 +42,28 @@ namespace HMS_API.Controllers
         [HttpPost]
         public async Task<ActionResult<Patient>> AddPatient(Patient patient)
         {
+            var existingUser = await _userManager.FindByEmailAsync(patient.User.Email);
+            if (existingUser != null)
+            {
+                return BadRequest("User with this email already exists");
+            }
+
+            var user = new User
+            {
+                UserName = patient.User.UserName,
+                Email = patient.User.Email,
+                PhoneNumber = patient.Phone,
+                FullName = patient.FullName
+            };
+
+            var result = await _userManager.CreateAsync(user, "Default@123");
+
+            if (!result.Succeeded)
+            {
+                return BadRequest(result.Errors);
+            }
+
+            patient.User = user;
             _context.Patients.Add(patient);
             await _context.SaveChangesAsync();
 
