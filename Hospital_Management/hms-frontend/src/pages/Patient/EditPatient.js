@@ -1,11 +1,13 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import api from "../../api/axios";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function EditPatient(){
     const {id} = useParams();
     const navigate = useNavigate();
+    const {token} = useContext(AuthContext)
 
     const [patientData, setPatientData] = useState({
         fullName: "",
@@ -19,15 +21,20 @@ export default function EditPatient(){
     });
 
     useEffect(() => {
-        axios.get(`/api/Patient/${id}`)
+        api.get(`/Patient/${id}`,{
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
         .then((res) => {
             setPatientData(res.data);
+            console.log(res)
         })
         .catch((err) => {
             console.error("Failed to fecth patient ", err)
             alert("Error fetching patient data.");
         })
-    }, [id])
+    }, [id, token])
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -42,7 +49,11 @@ export default function EditPatient(){
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.put(`/api/Patient/${id}`, patientData)
+        api.put(`/Patient/${id}`, patientData,{
+            headers:{
+                Authorization:`Bearer ${token}`
+            }
+        })
         .then(() => {
             alert("Patient data updated successfully!");
             navigate("/patients");
@@ -64,7 +75,7 @@ export default function EditPatient(){
                 <TextField label="Address" name="address" value={patientData.address} onChange={handleChange} required />
                 <TextField label="Username" name="userName" value={patientData.user.userName} onChange={handleChange} />
                 <TextField label="Email" name="email" value={patientData.user.email} onChange={handleChange} required />
-                <Button type="submit" variant="contained">Add Patient</Button>
+                <Button type="submit" variant="contained">Update Patient</Button>
 
         </Box>
     </Container>

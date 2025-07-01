@@ -7,6 +7,7 @@ import AddPatients from './pages/Patient/AddPatients';
 import EditPatient from './pages/Patient/EditPatient';
 import Patients from './pages/Patient/Patient';
 import PatientDetails from './pages/Patient/PatientDetails';
+import Register from './pages/Register';
 
 function PrivateRoute({children}){
   const {token} = useContext(AuthContext);
@@ -19,6 +20,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+
           <Route path='/patients' element={<PrivateRoute>
             <Patients/>
           </PrivateRoute>}/>
@@ -26,7 +29,7 @@ function App() {
             <AddPatients/>
           </PrivateRoute>}/>
           <Route path='/patients/:id' element={<PrivateRoute><PatientDetails/></PrivateRoute>}></Route>
-          <Route path='"/edit-patient/:id"' element = {
+          <Route path='/edit-patient/:id' element = {
             <PrivateRoute><EditPatient/></PrivateRoute>
           }></Route>
           <Route path='*' element={<Navigate to={'/login'}/>}/>

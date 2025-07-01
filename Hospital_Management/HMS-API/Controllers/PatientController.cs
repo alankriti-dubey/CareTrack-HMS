@@ -53,6 +53,8 @@ namespace HMS_API.Controllers
                 UserName = patient.User.UserName,
                 Email = patient.User.Email,
                 PhoneNumber = patient.Phone,
+                Gender = patient.Gender,
+                Address = patient.Address,
                 FullName = patient.FullName
             };
 

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HMS-API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d0d33172e79e7008c0a6f94244e5e012762a24c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65cf0ee22f4f41c9ea6b06e270ec1d464f8f95c2")]
 [assembly: System.Reflection.AssemblyProductAttribute("HMS-API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HMS-API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
