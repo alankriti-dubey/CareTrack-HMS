@@ -17,7 +17,6 @@ export default function Login(){
         try{
             const res = await api.post("/Auth/login", {email, password});
             setToken(res.data.token.result);
-            console.log("token            ",res.data.token.result)
             navigate("/patients");
         }
         catch{
@@ -49,6 +48,7 @@ export default function Login(){
                 />
                 {error && <Typography color="error">{error}</Typography>}
                 <Button type="submit" variant="contained" fullWidth sx={{mt:2}}>Login</Button>
+                <div>Don't have an account? <a href="/register">Register</a></div>
             </form>
         </Container>
     );

@@ -29,7 +29,7 @@ public class TokenService
         var roles = await _userManager.GetRolesAsync(user);
         foreach (var role in roles)
         {
-            claims.Add(new Claim("Role", role));
+            claims.Add(new Claim(ClaimTypes.Role, role));
         } 
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));

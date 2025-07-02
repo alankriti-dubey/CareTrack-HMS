@@ -27,7 +27,10 @@ public class DbInitializer
                 UserName = adminEmail,
                 Email = adminEmail,
                 EmailConfirmed = true,
-                FullName = "Alankriti Dubey"
+                FullName = "Alankriti Dubey",
+                Gender = "",
+                Address = "",
+                Role = "admin"
             };
 
             var result = await userManager.CreateAsync(adminUser, "Aloo@1234");

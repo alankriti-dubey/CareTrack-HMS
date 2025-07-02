@@ -11,30 +11,33 @@ public class AuthController : ControllerBase
     private readonly ApplicationDbContext _context;
     private readonly SignInManager<User> _signInManager;
     private readonly TokenService _tokenService;
+    private readonly RoleManager<IdentityRole> _roleManager;
 
-    public AuthController(UserManager<User> userManager, SignInManager<User> signInManager, TokenService tokenService)
+    public AuthController(UserManager<User> userManager, SignInManager<User> signInManager, TokenService tokenService, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _tokenService = tokenService;
+        _roleManager = roleManager;
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterModel model)
     {
-        var user = new User {
+        var user = new User
+        {
             UserName = model.Email,
             Email = model.Email,
             PhoneNumber = model.FullName,
             FullName = model.FullName,
             Gender = model.Gender,
             Address = model.Address,
-            Role = model.Role ?? "admin"
+            Role = model.Role,
         };
         var result = await _userManager.CreateAsync(user, model.Password);
 
         if (result.Succeeded)
-        {   
+        {
             return Ok("User Created");
         }
         return BadRequest(result);

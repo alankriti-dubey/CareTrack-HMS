@@ -55,7 +55,8 @@ namespace HMS_API.Controllers
                 PhoneNumber = patient.Phone,
                 Gender = patient.Gender,
                 Address = patient.Address,
-                FullName = patient.FullName
+                FullName = patient.FullName,
+                Role = "patient",
             };
 
             var result = await _userManager.CreateAsync(user, "Default@123");

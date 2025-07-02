@@ -8,5 +8,5 @@ public class RegisterModel
     public required string Address { get; set; }
     public required string UserName { get; set; }
     public DateTime DOB { get; set; }
-    public string? Role { get; set; } = "Patient";
+    public string? Role { get; set; }
 }

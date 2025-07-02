@@ -32,7 +32,7 @@ export default function AddPatients() {
     lockoutEnabled: true,
     accessFailedCount: 0,
     fullName: "", // Add this!
-    role: "Patient"
+    role: "patient"
   }
 });
 
