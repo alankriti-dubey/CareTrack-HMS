@@ -30,8 +30,6 @@ public class AuthController : ControllerBase
             Email = model.Email,
             PhoneNumber = model.FullName,
             FullName = model.FullName,
-            Gender = model.Gender,
-            Address = model.Address,
             Role = model.Role,
         };
         var result = await _userManager.CreateAsync(user, model.Password);

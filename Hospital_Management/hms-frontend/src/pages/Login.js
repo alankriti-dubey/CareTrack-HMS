@@ -17,7 +17,7 @@ export default function Login(){
         try{
             const res = await api.post("/Auth/login", {email, password});
             setToken(res.data.token.result);
-            navigate("/patients");
+            navigate("/home");
         }
         catch{
             setError("Invalid Email or password")

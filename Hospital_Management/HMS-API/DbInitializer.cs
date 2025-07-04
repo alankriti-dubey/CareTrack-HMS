@@ -28,8 +28,6 @@ public class DbInitializer
                 Email = adminEmail,
                 EmailConfirmed = true,
                 FullName = "Alankriti Dubey",
-                Gender = "",
-                Address = "",
                 Role = "admin"
             };
 

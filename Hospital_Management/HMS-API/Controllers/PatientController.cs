@@ -53,9 +53,7 @@ namespace HMS_API.Controllers
                 UserName = patient.User.UserName,
                 Email = patient.User.Email,
                 PhoneNumber = patient.Phone,
-                Gender = patient.Gender,
-                Address = patient.Address,
-                FullName = patient.FullName,
+                FullName = patient.User.FullName,
                 Role = "patient",
             };
 
@@ -88,20 +86,17 @@ namespace HMS_API.Controllers
                 return NotFound();
             }
 
-            existingPatient.FullName = patient.FullName;
+            existingPatient.User.FullName = patient.User.FullName;
             existingPatient.Gender = patient.Gender;
             existingPatient.DOB = patient.DOB;
             existingPatient.Phone = patient.Phone;
             existingPatient.Address = patient.Address;
 
-            if (patient.User != null)
+            if (existingPatient.User != null && patient.User != null)
             {
-                var userFromDb = await _context.Users.FindAsync(patient.User.Id);
-                if (userFromDb == null)
-                {
-                    return BadRequest("User not found");
-                }
-                existingPatient.User = userFromDb;
+                existingPatient.User.Email = patient.User.Email ?? existingPatient.User.Email;
+                existingPatient.User.UserName = patient.User.UserName ?? existingPatient.User.UserName;existingPatient.User.FullName = patient.User.FullName;
+                existingPatient.User.PhoneNumber = patient.Phone;
             }
 
             try

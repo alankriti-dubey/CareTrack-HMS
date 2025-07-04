@@ -9,4 +9,5 @@ public class ApplicationDbContext : IdentityDbContext<User>
 
     }
     public DbSet<Patient> Patients { get; set; }
+    public DbSet<Doctor> Doctors{ get; set; }
 }
