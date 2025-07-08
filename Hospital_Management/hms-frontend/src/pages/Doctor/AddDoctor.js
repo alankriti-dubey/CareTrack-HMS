@@ -9,7 +9,6 @@ export default function AddDoctor() {
     const { token } = useContext(AuthContext);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-  fullName: "",
   gender: "",
   dob: "",
   phone: "",
@@ -18,7 +17,9 @@ export default function AddDoctor() {
   user: {
     userName: "",
     email: "",
-    role: "doctor"
+    role: "doctor",
+  fullName: "",
+
   }
 });
 
@@ -45,8 +46,17 @@ useEffect(() => {
 
 const handleChange = (e) => {
     const { name, value } = e.target;
-
-if (["userName", "email"].includes(name)) {
+if (name === "fullName") {
+        // Update both patient and user full names
+        setFormData(prev => ({
+            ...prev,
+            fullName: value,
+            user: {
+                ...prev.user,
+                fullName: value
+            }
+        }));
+    } else if (["userName", "email"].includes(name)) {
         setFormData(prev => ({
             ...prev,
             user: {

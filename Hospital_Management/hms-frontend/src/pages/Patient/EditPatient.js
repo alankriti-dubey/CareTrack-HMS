@@ -76,7 +76,7 @@ export default function EditPatient(){
         <Container sx={{ mt: 4 }}>
         <Typography variant="h4" gutterBottom>Edit Patient</Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2 }}>
-            <TextField label="Full Name" name="fullName" value={patientData.fullName} onChange={handleChange} required />
+            <TextField label="Full Name" name="fullName" value={patientData.user?.fullName} onChange={handleChange} required />
                 <TextField label="Gender" name="gender" value={patientData.gender} onChange={handleChange} required />
                 <TextField type="date" name="dob" value={patientData.dob} onChange={handleChange} required InputLabelProps={{ shrink: true }} />
                 <TextField label="Phone" name="phone" value={patientData.phone} onChange={handleChange} required />

@@ -55,7 +55,7 @@ export default function Doctor(){
                     {
                         doctors.map((doctor) => (
                             <TableRow key={doctor.id}>
-                                <TableCell>{doctor.fullName}</TableCell>
+                                <TableCell>{doctor.user.fullName}</TableCell>
                                 <TableCell>{doctor.gender}</TableCell>
                                 <TableCell>{doctor.specialization}</TableCell>
                                 <TableCell>{doctor.user?.email}</TableCell>

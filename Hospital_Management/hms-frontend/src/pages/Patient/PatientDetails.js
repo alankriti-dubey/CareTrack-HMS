@@ -36,7 +36,7 @@ export default function PatientDetails(){
             </Typography>
             <Box sx={{display:"flex", flexDirection: "column", gap: 2}}>
 
-                <Typography><strong>Name:</strong> {patient.fullName}</Typography>
+                <Typography><strong>Name:</strong> {patient.user?.fullName}</Typography>
         <Typography><strong>Gender:</strong> {patient.gender}</Typography>
         <Typography><strong>DOB:</strong> {patient.dob}</Typography>
         <Typography><strong>Phone:</strong> {patient.phone}</Typography>

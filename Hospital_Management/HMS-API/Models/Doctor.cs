@@ -9,7 +9,6 @@ public class Doctor
     public string Specialization { get; set; }
     public string Phone { get; set; }
     public string Address { get; set; }
-    public string UserId { get; set; }
 
     public User User { get; set; }
 }

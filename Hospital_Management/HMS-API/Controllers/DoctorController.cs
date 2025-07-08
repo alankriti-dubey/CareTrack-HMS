@@ -72,11 +72,11 @@ public class DoctorController : ControllerBase
         existing.Phone = doctor.Phone;
         existing.Address = doctor.Address;
 
-        if (doctor.User != null && !string.IsNullOrWhiteSpace(doctor.User.Email))
+        if (existing.User != null && doctor.User != null)
         {
-            var user = await _context.Users.FindAsync(doctor.User.Id);
-            if (user == null) return BadRequest("User not found");
-            existing.User = user;
+            existing.User.UserName = doctor.User.UserName;
+            existing.User.Email = doctor.User.Email;
+            existing.User.FullName = doctor.User.FullName;
         }
 
         await _context.SaveChangesAsync();
@@ -88,9 +88,12 @@ public class DoctorController : ControllerBase
 
     public async Task<IActionResult> DeleteDoctor(int id)
     {
-        var doctor = await _context.Doctors.FindAsync(id);
+        var doctor = await _context.Doctors.Include(d => d.User).FirstOrDefaultAsync(d => d.Id == id);
         if (doctor == null) return NotFound();
-
+        if (doctor.User != null)
+        {
+            _context.Users.Remove(doctor.User);
+        }
         _context.Doctors.Remove(doctor);
         await _context.SaveChangesAsync();
         return NoContent();

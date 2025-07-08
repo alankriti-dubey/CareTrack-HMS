@@ -70,7 +70,7 @@ export default function Patients() {
                 <TableBody>
                     {patients.map(p => (
                         <TableRow key={p.id}>
-                            <TableCell>{p.fullName}</TableCell>
+                            <TableCell>{p.user?.fullName}</TableCell>
                             <TableCell>{p.gender}</TableCell>
                             <TableCell>{new Date(p.dob).toLocaleDateString()}</TableCell>
                             <TableCell>{p.phone}</TableCell>
