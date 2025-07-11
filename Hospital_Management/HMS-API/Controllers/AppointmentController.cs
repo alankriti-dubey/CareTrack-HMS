@@ -16,7 +16,7 @@ public class AppointmentController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
     {
-        return await _context.Appointments.Include(a => a.Patient).Include(a => a.Doctor).ToListAsync();
+        return await _context.Appointments.ToListAsync();
     }
 
     [Authorize(Roles = "admin")]

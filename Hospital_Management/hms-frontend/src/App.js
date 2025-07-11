@@ -3,8 +3,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { AuthContext, AuthProvider } from './context/AuthContext';
 import AddAppointment from './pages/Appointments/AddAppointment';
+import AppointmentDetails from './pages/Appointments/AppointmentDetails';
 import Appointments from './pages/Appointments/Appointments';
-import DeleteAppointment from './pages/Appointments/DeleteAppointment';
 import EditAppointment from './pages/Appointments/EditAppointment';
 import AddDoctor from './pages/Doctor/AddDoctor';
 import Doctor from './pages/Doctor/Doctor';
@@ -55,7 +55,7 @@ function App() {
           <Route path='/appointments/add' element={<PrivateRoute><AddAppointment/></PrivateRoute>}>
           </Route>
           <Route path='/appointment/edit/:id' element={<PrivateRoute><EditAppointment></EditAppointment></PrivateRoute>}></Route>
-          <Route path='/appointment/delete/:id' element={<PrivateRoute><DeleteAppointment></DeleteAppointment></PrivateRoute>}></Route>
+          <Route path='/appointment/:id' element={<PrivateRoute><AppointmentDetails/></PrivateRoute>}></Route>
           <Route path='*' element={<Navigate to={'/login'}/>}/>
         </Routes>
       </BrowserRouter>

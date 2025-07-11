@@ -9,6 +9,8 @@ export default function Appointments(){
     const {token} = useContext(AuthContext);
     const [appointments, setAppointments] = useState([]);
     const navigate = useNavigate();
+    const [patients, setPatients] = useState([]);
+    const [doctors, setDoctors] = useState([]);
 
     useEffect(() => {
         api.get("/Appointment", {
@@ -16,7 +18,41 @@ export default function Appointments(){
         })
         .then((res) => setAppointments(res.data))
         .catch((err) => console.error("Error fetching appointments:", err));
+        api.get("/Patient", {
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(res => setPatients(res.data))
+          .catch(err => console.error("Error fetching patients:", err));
+
+        api.get("/Doctor", {
+            headers: { Authorization: `Bearer ${token}` }
+        }).then(res => setDoctors(res.data))
+          .catch(err => console.error("Error fetching doctors:", err));
+ 
     }, [token]);
+
+
+    const getPatientName = (id) => {
+        const patient = patients.find(p => p.id === id);
+        return patient?.user?.fullName || "Unknown";
+    };
+
+    const getDoctorName = (id) => {
+        const doctor = doctors.find(d => d.id === id);
+        return doctor?.user?.fullName || "Unknown";
+    };
+
+    const handleDelete = (id) =>{
+        if(window.confirm("Are you sure?")){
+            api.delete(`/Apppointment/${id}`,{
+                headers:{
+                    Authorization:`Bearer ${token}`
+                }
+            })
+            .then(() => setAppointments(prev => prev.filter(a => a.id != id)))
+            .catch(err => alert("Failed to delete."))
+        }
+    }
+
 
     return (
         <Container sx={{mt: 4}}>
@@ -37,8 +73,14 @@ export default function Appointments(){
                                 Date
                             </TableCell><TableCell>
                                 Time
+                            </TableCell>
+                            <TableCell>
+                                Description
                             </TableCell><TableCell>
                                 Status
+                            </TableCell>
+                            <TableCell>
+                                Actions
                             </TableCell>
                         </TableRow>
                     </TableHead>
@@ -46,11 +88,15 @@ export default function Appointments(){
                         {
                             appointments.map((appt) => (
                                 <TableRow>
-                                    <TableCell>{appt.patientName}</TableCell>
-                                    <TableCell>{appt.doctorName}</TableCell>
-                                    <TableCell>{new Date(appt.dateTime).toLocaleDateString()}</TableCell>
-                                    <TableCell>{new Date(appt.dateTime).toLocaleTimeString()}</TableCell>
+                                    <TableCell>{getPatientName(appt.patientId)}</TableCell>
+                                    <TableCell>{getDoctorName(appt.doctorId)}</TableCell>
+                                    <TableCell>{new Date(appt.appointmentDate).toLocaleDateString()}</TableCell>
+                                    <TableCell>{new Date(appt.appointmentDate).toLocaleTimeString()}</TableCell>
+                                    <TableCell>{appt.description}</TableCell>
                                     <TableCell>{appt.status}</TableCell>
+                                    <TableCell><Button variant="contained" color="error"onClick={() => handleDelete(appt.id)}>Delete</Button>
+                                    <Button onClick={() => navigate(`/appointment/edit/${appt.id}`)}>Edit</Button>
+                                    </TableCell>
                                 </TableRow>
                             ))
                         }
