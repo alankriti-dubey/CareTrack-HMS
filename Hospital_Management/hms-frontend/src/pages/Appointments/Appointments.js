@@ -96,6 +96,7 @@ export default function Appointments(){
                                     <TableCell>{appt.status}</TableCell>
                                     <TableCell><Button variant="contained" color="error"onClick={() => handleDelete(appt.id)}>Delete</Button>
                                     <Button onClick={() => navigate(`/appointment/edit/${appt.id}`)}>Edit</Button>
+                                    <Button variant="outlined" onClick={() => navigate(`/appointment/${appt.id}`)}> View</Button>
                                     </TableCell>
                                 </TableRow>
                             ))

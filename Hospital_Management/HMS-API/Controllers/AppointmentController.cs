@@ -18,6 +18,19 @@ public class AppointmentController : ControllerBase
     {
         return await _context.Appointments.ToListAsync();
     }
+    
+    [Authorize(Roles = "admin")]
+    [HttpGet("{id}")]
+        public async Task<ActionResult<Appointment>> GetAppointment(int id)
+        {
+            var appointment = await _context.Appointments.FirstOrDefaultAsync(p => p.Id == id);
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+
+            return appointment;
+        }
 
     [Authorize(Roles = "admin")]
     [HttpPost]
